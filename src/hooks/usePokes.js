@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import getPokemonsList from "../services/getPokemon"
+import getPokemonsList from "services/getPokemon"
 
 const INITIAL_PAGE = 0
 

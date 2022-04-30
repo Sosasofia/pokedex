@@ -1,7 +1,7 @@
 import React from "react"
-import ListOfCards from "../components/ListOfCards"
-import usePokemons from "../hooks/usePokes"
-import Spinner from "../components/Spinner/Spinner"
+import ListOfCards from "components/ListOfCards"
+import usePokemons from "hooks/usePokes"
+import Spinner from "components/Spinner/Spinner"
 import styled from "styled-components"
 
 const Button = styled.button`

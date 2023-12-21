@@ -6,14 +6,13 @@ import { FixMeLater } from "../../App";
 
 type Props = {
   show: boolean;
-  handleClose: (value: boolean) => void;
-  // children: React.ReactNode;
+  toggleClose: (value: boolean) => void;
   children: JSX.Element | JSX.Element[];
 };
 
 const modalRoot: FixMeLater = document.getElementById("modal");
 
-export default function Modal({ show, handleClose, children }: Props) {
+export default function Modal({ show, toggleClose, children }: Props) {
   return ReactDom.createPortal(
     <div className="modal">
       {show ? (
@@ -22,7 +21,7 @@ export default function Modal({ show, handleClose, children }: Props) {
             <Close
               className="closeModal"
               src="/icon-close-modal.svg"
-              onClick={() => handleClose(!show)}
+              onClick={() => toggleClose(!show)}
               alt="close menu"
             />
             {children}

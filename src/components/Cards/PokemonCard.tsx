@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Modal from "components/Modal/Modal";
+import useModal from "hooks/useModal";
 
 const Card = styled.div`
   background-color: ${(props) => props.color || "aliceblue"};
@@ -68,19 +69,16 @@ const ImageContainer = styled.div`
 
 export default function PokemonCard({ ...poke }) {
   const { img, name, color } = poke;
-  console.log(poke);
-  const [show, setShow] = useState(false);
-  const ShowModal = () => setShow(true);
-  const handleClose = () => setShow(false);
+  const { show, toggle } = useModal();
 
   return (
     <>
-      <Card onClick={() => ShowModal()} color={color}>
+      <Card onClick={() => toggle()} color={color}>
         <img src={img} alt={name} />
         <h2>{name}</h2>
       </Card>
 
-      <Modal show={show} handleClose={handleClose}>
+      <Modal show={show} toggleClose={toggle}>
         <ImageContainer color={color}>
           <img src={img} alt={name} />
           <h2>{name}</h2>

@@ -28,6 +28,7 @@ const Button = styled.button`
     box-shadow: 0 3px 15px -2px;
   }
 `;
+
 export default function Home() {
   const { loading, pokemons, setPage } = usePokemons();
   const handleNextPage = () => setPage((prevPage) => prevPage + 1);

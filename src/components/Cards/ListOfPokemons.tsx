@@ -1,6 +1,7 @@
 import React from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
+import { FixMeLater } from "../../App";
 
 const List = styled.ul`
   display: grid;
@@ -14,10 +15,10 @@ const List = styled.ul`
   }
 `;
 
-export default function ListOfPokemons({ pokes }) {
+export default function ListOfPokemons({ pokes }: FixMeLater) {
   return (
     <List className="ListOfCards">
-      {pokes.map((pokemon) => (
+      {pokes.map((pokemon: FixMeLater) => (
         <li key={pokemon.id}>
           <PokemonCard {...pokemon} />
         </li>

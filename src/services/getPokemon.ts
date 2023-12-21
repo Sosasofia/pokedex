@@ -1,6 +1,8 @@
 import { BASE_URL, main_types, colors, LIMITE_POKEMONES } from "./settings";
 
-function fetchPokes(page) {
+import { FixMeLater } from "../App";
+
+function fetchPokes(page: number) {
   const urlFetch = `${BASE_URL}?limit=${LIMITE_POKEMONES}&offset=${
     page * LIMITE_POKEMONES
   }`;
@@ -9,7 +11,7 @@ function fetchPokes(page) {
     .then((res) => {
       const apiResponse = res.results;
       return Promise.all(
-        apiResponse.map((poke) => {
+        apiResponse.map((poke: FixMeLater) => {
           return fetch(poke.url).then((res) => res.json());
         })
       );
@@ -17,18 +19,20 @@ function fetchPokes(page) {
   return result;
 }
 
-function capitalize(word) {
+function capitalize(word: string) {
   const name = word.toLowerCase();
   const first = name.charAt(0).toUpperCase();
   const remain = name.slice(1);
   return first + remain;
 }
 
-function pokeColor(pokemon) {
-  const poke_types = pokemon.types.map((el) => el.type.name);
-  const type = main_types.find((type) => poke_types.indexOf(type) > -1);
+function pokeColor(pokemon: FixMeLater) {
+  const poke_types = pokemon.types.map((el: FixMeLater) => el.type.name);
+  const type: FixMeLater = main_types.find(
+    (type) => poke_types.indexOf(type) > -1
+  );
 
-  return colors[type];
+  return colors[type as keyof typeof colors];
 }
 
 export default function getPokemonsList({ page = 0 } = {}) {

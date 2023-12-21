@@ -3,9 +3,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Header from "./components/Header";
 
-export type FixMeLater = any;
-
-const App: React.FC = () => {
+const App = () => {
   return (
     <div className="App">
       <Header />

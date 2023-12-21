@@ -1,8 +1,8 @@
 import React from "react";
-import ListOfPokemons from "components/Cards/ListOfPokemons";
-import usePokemons from "hooks/usePokes";
-import Spinner from "components/Spinner/Spinner";
 import styled from "styled-components";
+import PokemonList from "components/Cards/PokemonList";
+import Spinner from "components/Spinner/Spinner";
+import usePokemon from "hooks/usePokes";
 
 const Button = styled.button`
   align-self: center;
@@ -30,12 +30,12 @@ const Button = styled.button`
 `;
 
 export default function Home() {
-  const { loading, pokemons, setPage } = usePokemons();
+  const { loading, pokemonList, setPage } = usePokemon();
   const handleNextPage = () => setPage((prevPage) => prevPage + 1);
 
   return (
     <>
-      {loading ? <Spinner></Spinner> : <ListOfPokemons pokes={pokemons} />}
+      {loading ? <Spinner></Spinner> : <PokemonList pokes={pokemonList} />}
       <Button onClick={handleNextPage}>Load More</Button>
     </>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Modal from "components/Modal/Modal";
 import useModal from "hooks/useModal";
+import { PartialPokemon } from "interfaces/index";
 
 const Card = styled.div`
   background-color: ${(props) => props.color || "aliceblue"};
@@ -67,8 +68,10 @@ const ImageContainer = styled.div`
   }
 `;
 
-export default function PokemonCard({ ...poke }) {
-  const { img, name, color } = poke;
+type Props = PartialPokemon;
+
+const PokemonCard = ({ ...pokemon }: Props) => {
+  const { img, name, color, height, hp, weight, exp } = pokemon;
   const { show, toggle } = useModal();
 
   return (
@@ -86,19 +89,21 @@ export default function PokemonCard({ ...poke }) {
 
         <Information>
           <p>
-            <strong>{poke.height}</strong>Height
+            <strong>{height}</strong>Height
           </p>
           <p>
-            <strong>{poke.weight}</strong>Weight
+            <strong>{weight}</strong>Weight
           </p>
           <p>
-            <strong>{poke.hp}</strong>Hp
+            <strong>{hp}</strong>Hp
           </p>
           <p>
-            <strong>{poke.exp}</strong>Exp
+            <strong>{exp}</strong>Exp
           </p>
         </Information>
       </Modal>
     </>
   );
-}
+};
+
+export default PokemonCard;

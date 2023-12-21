@@ -1,7 +1,7 @@
 import React from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
-import { FixMeLater } from "../../App";
+import { PartialPokemon } from "interfaces/index";
 
 const List = styled.ul`
   display: grid;
@@ -15,14 +15,20 @@ const List = styled.ul`
   }
 `;
 
-export default function ListOfPokemons({ pokes }: FixMeLater) {
+type Props = {
+  pokes: PartialPokemon[];
+};
+
+const PokemonList = ({ pokes }: Props) => {
   return (
-    <List className="ListOfCards">
-      {pokes.map((pokemon: FixMeLater) => (
+    <List>
+      {pokes.map((pokemon: PartialPokemon) => (
         <li key={pokemon.id}>
           <PokemonCard {...pokemon} />
         </li>
       ))}
     </List>
   );
-}
+};
+
+export default PokemonList;
